@@ -135,5 +135,11 @@ def markdown_to_html_node(markdown: str) -> ParentNode:
     return ParentNode(tag="div", children=children)
 
 
+def extract_title(markdown: str) -> str:
+    if markdown.startswith("# "):
+        return markdown.split("\n")[0][1:].strip()
+    raise ValueError("Markdown contains no header")
+
+
 if __name__ == "__main__":
     print(BlockType.PARAGRAPH)
