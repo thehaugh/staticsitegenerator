@@ -148,3 +148,15 @@ A nice image: ![nice](images/nice.jpg)
         expected_html = '<div><h2>A second title.</h2><blockquote>Every man <i>dies</i>, not every man really <i>lives</i>. -William Wallace.</blockquote><pre><code>print("hello world!")</code></pre><p>A nice image: <img src="images/nice.jpg" alt="nice"></img></p></div>'
         html_node = markdown_to_html_node(markdown)
         self.assertEqual(expected_html, html_node.to_html())
+
+    def test_markdown_to_html_node_tolkien(self):
+        markdown = """
+# The Unparalleled Majesty of "The Lord of the Rings"
+
+[Back Home](/)
+
+![LOTR image artistmonkeys](/images/rivendell.png)
+"""
+        expected_html = '<div><h1>The Unparalleled Majesty of "The Lord of the Rings"</h1><p><a href="/">Back Home</a></p><p><img src="/images/rivendell.png" alt="LOTR image artistmonkeys"></img></p></div>'
+        html_node = markdown_to_html_node(markdown)
+        self.assertEqual(expected_html, html_node.to_html())
